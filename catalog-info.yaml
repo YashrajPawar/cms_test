@@ -13,12 +13,12 @@ spec:
 
   # these are the steps which are rendered in the frontend with the form input
   parameters:
-    - title: Fill in some steps
+    - title: Creating S3 Bucket
       required:
         - name
       properties:
         name:
-          title: Name
+          title: Yashraj
           type: string
           description: Unique name of the component
           ui:autofocus: true
@@ -46,24 +46,8 @@ spec:
         values:
           name: '{{ parameters.name }}'
 
-    - id: fetch-docs
-      name: Fetch Docs
-      action: fetch:plain
-      input:
-        targetPath: ./community
-        url: https://github.com/backstage/community/tree/main/backstage-community-sessions
-
-    - id: publish
-      name: Publish
-      action: publish:github
-      input:
-        allowedHosts: ['github.com']
-        description: 'This is {{ parameters.name }}'
-        repoUrl: '{{ parameters.repoUrl }}'
-
-    - id: register
-      name: Register
-      action: catalog:register
-      input:
-        repoContentsUrl: {{ steps['publish'].output.repoContentsUrl }}
-        catalogInfoPath: '/catalog-info.yaml'
+    - id: createBucket
+      name: Create Bucket
+      action: AWS::S3::Bucket
+      Properties:
+        BucketName: DOC-EXAMPLE-BUCKET
