@@ -1,6 +1,12 @@
 apiVersion: backstage.io/v1beta2
 kind: Template
 # some metadata about the template itself
+metadata:
+  name: v1beta2-demo
+  title: Test Action template
+  description: scaffolder v1beta2 template demo
+  annotations:
+    backstage.io/time-saved: PT4H
 spec:
   owner: backstage/techdocs-core
   type: service
