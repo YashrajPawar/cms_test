@@ -1,21 +1,14 @@
-apiVersion: backstage.io/v1beta2
-kind: Template
-# some metadata about the template itself
+apiVersion: backstage.io/v1alpha1
+kind: Component
 metadata:
-  name: yashraj
-  title: Test Action template
-  description: scaffolder v1beta2 template demo
-  annotations:
-    backstage.io/time-saved: PT4H
+  name: artist-web
+  description: The place to be, for great artists
 spec:
-  owner: backstage/techdocs-core
-  type: service
-
-
-  # here's the steps that are executed in series in the scaffolder backend
-  steps:
-    - id: createBucket
-      name: Create Bucket
-      action: AWS::S3::Bucket
-      Properties:
-        BucketName: DOC-EXAMPLE-BUCKET
+  type: website
+  lifecycle: production
+  owner: artist-relations-team
+  system: artist-engagement-portal
+  dependsOn:
+    - resource:default/artists-db
+  providesApis:
+    - artist-api
