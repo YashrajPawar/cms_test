@@ -11,19 +11,6 @@ spec:
   owner: backstage/techdocs-core
   type: service
 
-  # these are the steps which are rendered in the frontend with the form input
-  parameters:
-    - title: Creating S3 Bucket
-      required:
-        - name
-      properties:
-        name:
-          title: Yashraj
-          type: string
-          description: Unique name of the component
-          ui:autofocus: true
-          ui:options:
-            rows: 5
 
   # here's the steps that are executed in series in the scaffolder backend
   steps:
