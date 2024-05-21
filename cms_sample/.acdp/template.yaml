@@ -1,64 +1,43 @@
 apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
-  description: A CDK Python app for showing a basic skeleton for a CMS module
-  name: xl4-sample
+  name: create-s3-bucket
+  title: Create S3 Bucket
+  description: Create a new S3 bucket in AWS
   tags:
-  - cms
-  - guide
-  - sample
-  title: CMS Sample Module
-  annotations:
-    backstage.io/techdocs-ref: dir:../docs/components/cms-sample/
+    - aws
+    - s3
 spec:
+  owner: your-username # Replace with your Backstage username
   type: service
-  output:
-    links:
-    - entityRef: ${{ steps.catalogRegister.output.entityRef }}
-      icon: catalog
-      title: Open in catalog
-  owner: aws solutions
   parameters:
-  - properties:
-      componentId:
-        default: xl4-sample
-        description: Unique name of the component
-        pattern: '[a-zA-Z][-a-zA-Z0-9]*[a-zA-Z]'
-        title: Name
-        type: string
-        ui:field: EntityNamePicker
-      description:
-        default: A CDK Python app for showing a basic skeleton for a CMS module
-        description: Help others understand what this component is for.
-        title: Description
-        type: string
-      owner:
-        description: Owner of the component
-        title: Owner
-        type: string
-        ui:field: OwnerPicker
-        ui:options:
-          catalogFilter:
-            kind:
-            - Group
-            - User
-    required:
-    - componentId
-    - owner
-    title: Provide the required information
-  - properties:
-      appUniqueId:
-        default: xl4
-        description: Application unique identifier used to uniquely name resources within the stack
-        title: App Unique ID
-        type: string
-        ui:disabled: true
-    required:
-    - appUniqueId
-    title: Provide the Module Configuration
+    - title: Bucket Details
+      required:
+        - BucketName
+        - Region
+      properties:
+        BucketName:
+          title: Bucket Name
+          type: string
+          description: Name of the S3 bucket (must be unique globally)
+          ui:autofocus: true
+          ui:options:
+            pattern: ^[a-z0-9][a-z0-9-]{1,61}[a-z0-9]$  # Valid bucket name regex
+        Region:
+          title: AWS Region
+          type: string
+          description: Region where the bucket will be created (e.g., us-east-1)
+  action:
+    title: Action
+    type: string
+    description: What action do you want to perform?
+    enum:
+      - create
+      - destroy  # Optional, for future destroy functionality
   steps:
-  - action: AWS::S3::Bucket
-    id: s3bucket
-    name: S3 Bucket
-    Properties:
-      BucketName: DOC-EXAMPLE-BUCKET
+    - id: create-bucket
+      title: Create S3 Bucket
+      script: |  # Shell script using AWS CLI (replace with your chosen tool)
+        aws s3 mb s3://${parameters.BucketName} --region ${parameters.Region}
+        echo "S3 bucket '${parameters.BucketName}' created in region '${parameters.Region}'"
+
