@@ -1,12 +1,10 @@
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: artist-web
+  name: cms_test
   annotations:
     github.com/project-slug: YashrajPawar/cms_test
-  description: The place to be, for great artists
 spec:
-  type: website
-  lifecycle: production
-  owner: Yashraj
-  system: artist-engagement-portal
+  type: other
+  lifecycle: unknown
+  owner: yashraj
