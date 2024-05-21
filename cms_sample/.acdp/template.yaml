@@ -2,7 +2,7 @@ apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
   description: A CDK Python app for showing a basic skeleton for a CMS module
-  name: cms-sample
+  name: xl4-sample
   tags:
   - cms
   - guide
@@ -21,7 +21,7 @@ spec:
   parameters:
   - properties:
       componentId:
-        default: cms-sample
+        default: xl4-sample
         description: Unique name of the component
         pattern: '[a-zA-Z][-a-zA-Z0-9]*[a-zA-Z]'
         title: Name
@@ -48,7 +48,7 @@ spec:
     title: Provide the required information
   - properties:
       appUniqueId:
-        default: cms
+        default: xl4
         description: Application unique identifier used to uniquely name resources within the stack
         title: App Unique ID
         type: string
@@ -57,46 +57,8 @@ spec:
     - appUniqueId
     title: Provide the Module Configuration
   steps:
-  # - action: aws:acdp:catalog:create
-  #   id: acdpCatalogCreate
-  #   name: ACDP S3 Catalog Create
-  #   input:
-  #     componentId: ${{ parameters.componentId }}
-  #     assetsSourcePath: dir:../acdp/cms-sample/
-  #     docsSiteSourcePath: dir:../docs/components/cms-sample/site/
-  #     entity:
-  #       apiVersion: backstage.io/v1alpha1
-  #       kind: Component
-  #       metadata:
-  #         annotations:
-  #           aws.amazon.com/acdp-deploy-on-create: "true"
-  #         description: ${{parameters.description}}
-  #         name: ${{parameters.componentId}}
-  #         namespace: acdp
-  #       spec:
-  #         lifecycle: experimental
-  #         owner: ${{parameters.owner}}
-  #         type: service
-
-  # - action: catalog:register
-  #   id: catalogRegister
-  #   name: Backstage Catalog Register
-  #   input:
-  #     catalogInfoUrl: ${{ steps.acdpCatalogCreate.output.catalogItemS3Url }}
-
   - action: AWS::S3::Bucket
     id: s3bucket
     name: S3 Bucket
     Properties:
       BucketName: DOC-EXAMPLE-BUCKET
-
-  # - action: aws:acdp:configure
-  #   id: acdpConfigureDeploy
-  #   name: ACDP Configure Deploy
-  #   input:
-  #     entityRef: ${{ steps.catalogRegister.output.entityRef }}
-  #     buildParameters:
-  #     - name: CFN_TEMPLATE_URL
-  #       value: UNSET
-  #     - name: APP_UNIQUE_ID
-  #       value: ${{ parameters.appUniqueId }}

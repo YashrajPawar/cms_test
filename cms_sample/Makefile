@@ -6,7 +6,7 @@
 # ========================================================
 # SOLUTION METADATA
 # ========================================================
-export MODULE_NAME ?= cms-sample
+export MODULE_NAME ?= xl4-sample
 export MODULE_VERSION ?= ${SOLUTION_VERSION}
 export MODULE_DESCRIPTION ?= A CDK Python app for showing a basic skeleton for a CMS module
 export MODULE_AUTHOR ?= AWS Industrial Solutions Team
@@ -17,7 +17,7 @@ MODULE_PATH := $(abspath $(dir $(lastword $(MAKEFILE_LIST))))
 # ========================================================
 # VARIABLES
 # ========================================================
-export APP_UNIQUE_ID ?= cms
+export APP_UNIQUE_ID ?= xl4
 
 export MODULE_SHORT_NAME = sample
 export STACK_NAME ?= ${APP_UNIQUE_ID}-app--${MODULE_NAME}
