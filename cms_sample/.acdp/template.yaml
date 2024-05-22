@@ -24,7 +24,23 @@ spec:
           type: string
           title: AWS Region
           description: The AWS region where the bucket will be created.
-  steps:     
+  steps:
+    - id: generate
+      name: Generate CloudFormation Template
+      action: scaffolder:generate
+      input:
+        outputPath: ./cloudformation.yaml
+        template:
+          apiVersion: cloudformation.aws.amazon.com/v1
+          kind: Template
+          metadata:
+            name: s3-bucket
+          resources:
+            Bucket:
+              Type: 'AWS::S3::Bucket'
+              Properties:
+                BucketName: ${{ parameters.bucketName }}
+                Region: ${{ parameters.region }}    
     - id: create-bucket
       title: Create S3 Bucket
       script: |
