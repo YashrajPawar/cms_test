@@ -41,11 +41,6 @@ spec:
               Properties:
                 BucketName: ${{ parameters.bucketName }}
                 Region: ${{ parameters.region }}    
-    - id: create-bucket
-      title: Create S3 Bucket
-      script: |
-        aws s3 mb s3://${parameters.bucketName} --region ${parameters.region}
-        echo "S3 bucket '${parameters.bucketName}' created in region '${parameters.region}'"
 
 
 
