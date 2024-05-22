@@ -8,7 +8,7 @@ metadata:
     - aws
     - s3
 spec:
-  owner: your-team@example.com
+  owner: yashraj
   type: service
   parameters:
     - title: Bucket Configuration
@@ -40,9 +40,4 @@ spec:
               Type: 'AWS::S3::Bucket'
               Properties:
                 BucketName: ${{ parameters.bucketName }}
-                Region: ${{ parameters.region }}    
-
-
-
-
-
+                Region: ${{ parameters.region }}
