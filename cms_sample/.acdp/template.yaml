@@ -1,14 +1,14 @@
 apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
-  name: create-s3-bucket
+  name: S3 Bucket
   title: Create S3 Bucket
   description: This template creates an S3 bucket in AWS using CloudFormation.
   tags:
     - aws
     - s3
 spec:
-  owner: yashraj
+  owner: excelfore
   type: service
   parameters:
     - title: Bucket Configuration
