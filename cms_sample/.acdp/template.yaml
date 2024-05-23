@@ -24,7 +24,8 @@ spec:
           title: AWS Region
           description: The AWS region where the bucket will be created.
   steps:
-    - id: fetch template
+    - id: fetch-base
+      name: Fetch Base
       action: fetch:template
-      input:  
+      input:
         url: ./s3bucket
