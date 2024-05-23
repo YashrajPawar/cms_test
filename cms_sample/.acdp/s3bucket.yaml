@@ -3,7 +3,7 @@ Resources:
   MyS3Bucket:
     Type: AWS::S3::Bucket
     Properties:
-      BucketName: Examplemvinrini-swkno
+      BucketName: !Sub '${BucketName}'
 
 Outputs:
   BucketName:

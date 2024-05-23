@@ -13,6 +13,7 @@ spec:
   parameters:
     - title: Bucket Configuration
       required:
+        - bucketName
         - region
       properties:
         bucketName:
@@ -29,6 +30,8 @@ spec:
       action: fetch:template
       input:
         url: ./s3bucket.yaml
+        values:
+          BucketName: ${{ parameters.bucketName }}
 
 
     - id: fetch-docs
