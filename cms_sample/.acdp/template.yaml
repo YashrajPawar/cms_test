@@ -26,4 +26,5 @@ spec:
   steps:
     - id: fetch template
       action: fetch:template
-      url: https://github.com/YashrajPawar/cms_test/blob/master/cms_sample/.acdp/s3bucket.yaml
+      input:  
+        url: https://github.com/YashrajPawar/cms_test/blob/master/cms_sample/.acdp/s3bucket.yaml
