@@ -25,9 +25,8 @@ spec:
           title: AWS Region
           description: The AWS region where the bucket will be created.
   steps:
-    - id: generate
-      name: s3 bucket creation
-      action: AWS::S3::Bucket
-      Properties:
+    - id: fetch template
+      action: fetch:template
+      url: 
+      inputs:
         BucketName: ${{ parameters.bucketName }}
-        Region: ${{ parameters.region }}  

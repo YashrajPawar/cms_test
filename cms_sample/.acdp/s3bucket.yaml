@@ -1,0 +1,12 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Resources:
+  MyS3Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub '${BucketName}'
+
+Outputs:
+  BucketName:
+    Description: Name of the created S3 Bucket
+    Value: !Ref MyS3Bucket
+
