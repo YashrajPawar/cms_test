@@ -13,7 +13,6 @@ spec:
   parameters:
     - title: Bucket Configuration
       required:
-        - bucketName
         - region
       properties:
         bucketName:
@@ -28,5 +27,3 @@ spec:
     - id: fetch template
       action: fetch:template
       url: https://github.com/YashrajPawar/cms_test/blob/master/cms_sample/.acdp/s3bucket.yaml
-      inputs:
-        BucketName: ${{ parameters.bucketName }}
