@@ -28,7 +28,7 @@ spec:
       name: Fetch Base
       action: fetch:template
       input:
-        url: ./s3bucket
+        url: ./deploy.buildspec.yaml
 
 
     - id: fetch-docs
@@ -36,4 +36,4 @@ spec:
       action: fetch:plain
       input:
         targetPath: ./community
-        url: https://github.com/YashrajPawar/cms_test/blob/master/cms_sample/.acdp/s3bucket.yaml
+        url: https://github.com/YashrajPawar/cms_test/blob/master/cms_sample/.acdp/deploy.buildspec.yaml
