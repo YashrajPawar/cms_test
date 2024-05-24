@@ -27,7 +27,7 @@ spec:
   steps:
     - id: create-s3-bucket
       name: Create S3 Bucket
-      action: custom:create-s3-bucket
+      action: acme:file:create
       input:
         script: |
           #!/bin/bash
