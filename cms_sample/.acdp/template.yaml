@@ -25,18 +25,13 @@ spec:
           title: AWS Region
           description: The AWS region where the bucket will be created.
   steps:
-    - id: fetch-base
-      name: Fetch Base
-      action: fetch:template
+    - id: create-s3-bucket
+      name: Create S3 Bucket
+      action: scaffolder:execute
       input:
-        url: ./s3bucket.yaml
-        values:
-          BucketName: ${{ parameters.bucketName }}
-
-
-    - id: fetch-docs
-      name: Fetch Docs
-      action: fetch:plain
-      input:
-        targetPath: ./community
-        url: https://github.com/YashrajPawar/cms_test/blob/master/cms_sample/.acdp/s3bucket.yaml
+        script: |
+          #!/bin/bash
+          set -e
+          BUCKET_NAME=${{ parameters.bucketName }}
+          REGION=${{ parameters.region }}
+          aws s3api create-bucket --bucket $BUCKET_NAME --region $REGION --create-bucket-configuration LocationConstraint=$REGION
