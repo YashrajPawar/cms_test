@@ -31,7 +31,6 @@ spec:
       input:
         script: |
           #!/bin/bash
-          set -e
           BUCKET_NAME=${{ parameters.bucketName }}
           REGION=${{ parameters.region }}
           aws s3api create-bucket --bucket $BUCKET_NAME --region $REGION --create-bucket-configuration LocationConstraint=$REGION
